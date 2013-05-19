@@ -32,6 +32,10 @@ module Rforvo
     def standard_pronounciation(word)
       return nil if word.nil?
       content = MultiJson.load(open(URI::escape("http://apifree.forvo.com/key/#{@api_key}/format/json/action/standard-pronunciation/word/#{word}")).read)
+      if content[0] == 'Limit/day reached.'
+        warn 'Forvo API Limit reached'
+        return nil
+      end
       if content['items'] && content['items'].count > 0
         content['items'].first['pathmp3']
       else nil end
