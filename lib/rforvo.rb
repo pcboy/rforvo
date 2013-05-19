@@ -25,6 +25,7 @@ module Rforvo
 
     def initialize(api_key, language = 'en')
       @api_key = api_key
+      raise ArgumentError, "Forvo API Key needed." if api_key.nil? || api_key.empty?
       @lang = language
     end
 
