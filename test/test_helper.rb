@@ -16,26 +16,8 @@
 #  David Hagege <david.hagege@gmail.com>
 #
 
-require "rforvo/version"
-require 'open-uri'
-require 'multi_json'
-require 'base64'
+require 'rforvo'
+require 'minitest/autorun'
+require 'minitest/unit'
+require 'minitest/pride'
 
-module Rforvo
-  class Rforvo
-
-    def initialize(language = 'en')
-      @lang = language
-    end
-
-    def standard_pronounciation(word)
-      return nil if word.nil?
-      search = "http://forvo.com/search/#{word}/#{@lang}"
-      play_url = open(search).read.split.select{|x| x.start_with?('onclick="Play(') }
-      return nil if play_url.empty?
-      file = Base64.decode64(play_url.first.scan(/Play\(\d+,'([^']+)'/).to_s)
-      "http://audio.forvo.com/audios/mp3/#{file}" if file
-    end
-
-  end
-end

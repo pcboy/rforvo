@@ -16,26 +16,12 @@
 #  David Hagege <david.hagege@gmail.com>
 #
 
-require "rforvo/version"
-require 'open-uri'
-require 'multi_json'
-require 'base64'
+require 'test_helper'
 
-module Rforvo
-  class Rforvo
-
-    def initialize(language = 'en')
-      @lang = language
-    end
-
-    def standard_pronounciation(word)
-      return nil if word.nil?
-      search = "http://forvo.com/search/#{word}/#{@lang}"
-      play_url = open(search).read.split.select{|x| x.start_with?('onclick="Play(') }
-      return nil if play_url.empty?
-      file = Base64.decode64(play_url.first.scan(/Play\(\d+,'([^']+)'/).to_s)
-      "http://audio.forvo.com/audios/mp3/#{file}" if file
-    end
-
+class RforvoTest < Minitest::Test
+  def test_standard_pronunciation
+    forvo = Rforvo::Rforvo.new('en')
+    assert_equal(forvo.standard_pronounciation('test').empty?, false)
+    assert_equal(forvo.standard_pronounciation('4242424242').nil?, true)
   end
 end
