@@ -30,7 +30,7 @@ module Rforvo
 
     def standard_pronunciation(word)
       return nil if word.nil?
-      search = "http://forvo.com/search/#{CGI::escape(word)}/#{@lang}"
+      search = "http://forvo.com/search/#{::CGI::escape(word)}/#{@lang}"
       play_url = open(search).read.split.select{|x| x.start_with?('onclick="Play(') }
       return nil if play_url.empty?
       file = Base64.decode64(play_url.first.scan(/Play\(\d+,'([^']+)','([^']+)',false,'([^']+)',/).flatten.last)
