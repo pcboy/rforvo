@@ -20,6 +20,7 @@ require "rforvo/version"
 require 'open-uri'
 require 'multi_json'
 require 'base64'
+require 'cgi'
 
 module Rforvo
   class Rforvo
