@@ -1,6 +1,8 @@
+[![Build Status](https://travis-ci.org/pcboy/rforvo.svg?branch=master)](https://travis-ci.org/pcboy/rforvo)
+
 # Rforvo
 
-TODO: Write a gem description
+RForvo use scrapping to get word pronunciations from forvo.com
 
 ## Installation
 
