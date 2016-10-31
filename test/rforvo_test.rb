@@ -21,7 +21,7 @@ require 'test_helper'
 class RforvoTest < Minitest::Test
   def test_standard_pronunciation
     forvo = Rforvo::Rforvo.new('en')
-    assert_equal(forvo.standard_pronounciation('test').empty?, false)
-    assert_equal(forvo.standard_pronounciation('4242424242').nil?, true)
+    assert_equal(forvo.standard_pronunciation('test').empty?, false)
+    assert_equal(forvo.standard_pronunciation('4242424242').nil?, true)
   end
 end

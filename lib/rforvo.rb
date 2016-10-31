@@ -28,7 +28,7 @@ module Rforvo
       @lang = language
     end
 
-    def standard_pronounciation(word)
+    def standard_pronunciation(word)
       return nil if word.nil?
       search = "http://forvo.com/search/#{word}/#{@lang}"
       play_url = open(search).read.split.select{|x| x.start_with?('onclick="Play(') }

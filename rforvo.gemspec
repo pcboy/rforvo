@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Rforvo::VERSION
   spec.authors       = ["David Hagege"]
   spec.email         = ["david.hagege@gmail.com"]
-  spec.description   = %q{RForvo get the main pronounciation of a word from forvo.com}
+  spec.description   = %q{RForvo get the main pronunciation of a word from forvo.com}
   spec.summary       = %q{}
   spec.homepage      = ""
   spec.license       = "MIT"
