@@ -31,11 +31,11 @@ module Rforvo
 
     def standard_pronunciation(word)
       return nil if word.nil?
-      search = "http://forvo.com/search/#{::URI::escape(word)}/#{@lang}"
+      search = "https://forvo.com/search/#{::URI::escape(word)}/#{@lang}"
       play_url = open(search).read.split.select{|x| x.start_with?('onclick="Play(') }
       return nil if play_url.empty?
       file = Base64.decode64(play_url.first.scan(/Play\(\d+,'([^']+)','([^']+)',false,'([^']+)',/).flatten.last)
-      "http://audio.forvo.com/audios/mp3/#{file}" if file
+      "https://audio.forvo.com/audios/mp3/#{file}" if file
     end
 
   end
